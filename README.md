@@ -1,76 +1,83 @@
 # NEXUS System Architecture
 
-NEXUS is a unified architectural concept for next-generation computing systems. It combines a compiler-managed execution model, AI runtime optimization, specialized hardware acceleration, and a decoupled memory hierarchy into a single execution fabric.
+[🇬🇧 English](./README.md) | [🇹🇷 Türkçe](./TR/README.md)
 
-This repository synthesizes several interrelated ideas into one coherent architecture:
+---
 
-- NEXUS-New-PC-Architecture: overall system and execution design
-- OMNI-CORE-v2-NEXUS-FLOW: compiler, task graph, flow semantics, and execution model
-- Fourier-Analog-Processing-Unit-FAPU-: analog Fourier-domain acceleration
-- MOSRAM: memory redesign and highly specialized storage layer
+## Overview
 
-## Core Thesis
+NEXUS is a unified architectural concept for next-generation computing systems. It integrates:
 
-The dominant limitation of current computing systems is not merely raw compute power; it is the architectural bottleneck created by CPU-centric orchestration, fragmented memory access, and the lack of adaptive system-level optimization.
+- compiler-managed execution
+- AI-driven runtime optimization
+- specialized compute acceleration
+- managed memory hierarchy
+- heterogeneous orchestration across CPU, GPU, NPU, and analog systems
 
-NEXUS argues for a different model:
+This repository synthesizes several related architectural ideas into a coherent system model:
 
-- user intent is compiled into a structured task graph
-- work is dispatched to the most appropriate execution unit
-- memory is treated as a managed resource, not just passive storage
-- AI acts as a system optimizer and runtime scheduler
-- analog and programmable accelerators complement digital compute
+- NEXUS-New-PC-Architecture
+- OMNI-CORE-v2-NEXUS-FLOW
+- Fourier-Analog-Processing-Unit-FAPU-
+- MOSRAM
 
-## Architecture Layers
+---
 
-### 1. Compiler / Intent Layer
-The compiler translates user intent into a dependency-aware task graph. This graph contains execution nodes, data ownership boundaries, resource constraints, and failure paths.
+## Thesis
 
-### 2. Scheduler / Runtime Layer
-The runtime scheduler decides where each task should run:
+The central limitation of current computing is not only raw compute power, but the architectural bottleneck created by CPU-centric orchestration, fragmented memory access, and rigid execution pipelines.
 
-- CPU for orchestration and scalar control
-- GPU for vectorized parallel operations
-- NPU for learned optimization and inference acceleration
-- FAPU for analog Fourier-domain compute
-- specialized memory paths for data-heavy flows
+NEXUS proposes a different model:
 
-### 3. Memory Fabric Layer
-Memory is separated into multiple categories:
+- user intent is lowered into task graphs
+- work is assigned to the most suitable execution domain
+- memory is treated as a managed system resource
+- AI acts as a runtime optimizer and scheduler
+- analog and programmable accelerators complement digital execution
 
-- application memory
-- data memory
-- page-addressable or virtualized memory
-- high-speed buffers for specialized compute units
+---
 
-This reduces the dominance of central CPU memory traffic.
+## Core Architecture
 
-### 4. Specialized Compute Layer
-NEXUS includes multiple execution domains instead of one universal compute pipeline. Specialized compute becomes a core architectural concept.
+```text
+User Intent
+    ↓
+Compiler / IR
+    ↓
+Runtime Scheduler
+    ↓
+Execution Fabric
+    ├─ CPU: orchestration and scalar logic
+    ├─ GPU: parallel numeric workloads
+    ├─ NPU: inference and adaptive optimization
+    ├─ FAPU: analog / spectral acceleration
+    └─ Memory Fabric: managed access and staging
+    ↓
+AI Controller
+    ↓
+Adaptive Optimization Loop
+```
 
-### 5. AI Controller Layer
-The AI controller observes runtime behavior such as memory pressure, thermal state, latency, queue length, and success/failure trends. It then optimizes scheduling, workload placement, and system-level policy over time.
+---
 
-## Why This Architecture Matters
+## Documentation
 
-This model aims to solve several recurring problems in modern computing:
+### English
+- `docs/architecture-overview.md`
+- `docs/compiler-flow.md`
+- `docs/memory-hierarchy.md`
+- `docs/analog-compute.md`
+- `docs/ai-runtime-controller.md`
+- `docs/parallel-execution-model.md`
+- `docs/roadmap.md`
+- `paper/NEXUS-System-Architecture.md`
 
-- CPU bottlenecks
-- inefficient memory access
-- rigid execution pipelines
-- poor workload matching between compute units
-- lack of adaptive system optimization
+### Turkish
+- `TR/README.md`
+- `TR/docs/`
+- `TR/paper/`
 
-## Repository Contents
-
-- `docs/architecture-overview.md`: high-level system model
-- `docs/compiler-flow.md`: compiler and execution semantics
-- `docs/memory-hierarchy.md`: memory and storage model
-- `docs/analog-compute.md`: analog and Fourier-based compute unit
-- `docs/ai-runtime-controller.md`: AI optimization and runtime control
-- `docs/parallel-execution-model.md`: concurrency and scheduling model
-- `docs/roadmap.md`: future development path
-- `paper/NEXUS-System-Architecture.md`: long-form synthesis paper
+---
 
 ## Suggested Reading Order
 
@@ -82,6 +89,26 @@ This model aims to solve several recurring problems in modern computing:
 6. `docs/parallel-execution-model.md`
 7. `paper/NEXUS-System-Architecture.md`
 
+For Turkish readers, start from `TR/README.md`.
+
+---
+
+## Why It Matters
+
+This architecture addresses recurring problems in modern systems:
+
+- CPU bottlenecks
+- poor memory scaling
+- rigid execution patterns
+- disconnected accelerators
+- lack of adaptive runtime behavior
+
+---
+
 ## Summary
 
-NEXUS proposes a system in which the computer is reimagined as an execution fabric: a coordinated environment composed of compiler planning, specialized compute, managed memory, and AI-based runtime optimization.
+NEXUS reimagines the computer as an execution fabric rather than a CPU-centered machine. By combining compiler orchestration, specialized compute, memory decoupling, and AI-driven optimization, it provides a coherent model for next-generation parallel and AI-centric systems.
+
+---
+
+**Language Switch**: [English](./README.md) | [Türkçe](./TR/README.md)
